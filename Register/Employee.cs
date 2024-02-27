@@ -15,4 +15,9 @@ public class Employee
 		Name = name;
 		Salary = salary;
 	}
+
+	public void printEmployee() 
+	{
+		Console.Write("Employee: " + Name + ",  Salary: " + Salary + " SEK");
+	}
 }

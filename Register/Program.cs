@@ -27,7 +27,7 @@ public static void Main(string[] args)
 
     foreach (var emp in registryList)
     {
-        Console.WriteLine(emp.toString());
+        emp.printEmployee();
     }
 
 }
