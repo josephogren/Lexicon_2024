@@ -1,5 +1,6 @@
-using namespace Registry;
+namespace Registry;
 
+// * ENTRY POINT I PROGRAM *
 
 public static void Main(string[] args)
 {

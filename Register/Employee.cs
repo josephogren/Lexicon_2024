@@ -21,3 +21,15 @@ public class Employee
 		Console.Write("Employee: " + Name + ",  Salary: " + Salary + " SEK");
 	}
 }
+
+
+// Second ClassTemplate
+
+public class Employee2
+{
+	string Name = string.Empty;
+	int Clearance = 99;
+
+	void printEmployee() { System.Console.WriteLine($"Name: {}  (Code {Clearance})"); }
+
+}
