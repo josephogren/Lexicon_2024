@@ -1,0 +1,15 @@
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\bin\Debug\net6.0\FlowControl.exe
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\bin\Debug\net6.0\FlowControl.deps.json
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\bin\Debug\net6.0\FlowControl.runtimeconfig.json
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\bin\Debug\net6.0\FlowControl.dll
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\bin\Debug\net6.0\FlowControl.pdb
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.csproj.AssemblyReference.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.AssemblyInfoInputs.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.AssemblyInfo.cs
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.csproj.CoreCompileInputs.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.dll
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\refint\FlowControl.dll
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.pdb
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\FlowControl.genruntimeconfig.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_2\Exercise2\FlowControl\obj\Debug\net6.0\ref\FlowControl.dll
