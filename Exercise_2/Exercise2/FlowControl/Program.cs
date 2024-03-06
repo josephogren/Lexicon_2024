@@ -9,11 +9,10 @@ internal class Program
 
 
     static void Main(string[] args)
-    {       
-        
-        Printer.PrintMessage("0 - Exit, 1 - BILJETTER, 2 - Grupp, 3 - X10 GGR, 4 - DET TREDJE ORDET");
+    {
 
-        // Global Variables
+
+        // Global Variable
         uint gTotalprice = 0;
 
 
@@ -21,56 +20,67 @@ internal class Program
 
         // MENYVAL 1 UNGDOM ELLER PENSIONÄR
         void menyVal1()
-        {            
-            Printer.PrintMessage("Enter age: ");
+        {
+            var age = 0;
 
-            var input_str = Console.ReadLine();
-            var age = int.TryParse(input_str, out var result) ? result : 0;     
+            Printer.PrintMessage("Age: ");
+                        
+            while(Printer.PromptNumber() <= 0);
 
+            // Check if person is an Adult
             if (age >= 20)
-            { if (age < 65) { Console.WriteLine("Standardpris 120kr"); }
+            {
+                // Make sure person is not a Senior
+                if (age < 65) { Printer.PrintMessage("Standardpris 120kr"); }
                 else { Printer.PrintMessage("Pensionärspris 90kr"); }
             }
             else { Printer.PrintMessage("Ungdomspris: 80kr"); }
+
+
         }
 
-        void subMenu() 
+        void subMenu()
         {
-            int count = 0;
+            gTotalprice = 0;
+
             Printer.PrintMessage("Antal i sällskapet: ");
 
-            var input_str = Console.ReadLine();
-            var nPurchasedTickets = int.TryParse(input_str, out var result) ? result : 0;
+            var input_str = Printer.PromptText();
+            var nPeople = int.TryParse(input_str, out var result) ? result : 0;
 
-            gTotalprice += STANDARD_PRICE;
-            Console.WriteLine($"TICKETS: {nPurchasedTickets}, TOTAL PRICE: {gTotalprice}");
+            // Run Menu option 1 (Ticket Purchase) for each person
+            for (int p = 1; p <= nPeople; p++)
+            {
+                menyVal1();
+            }
+
+            Printer.PrintMessage($"Antal personer: {nPeople}  TOTALPRIS: {gTotalprice}");
+
         }
 
         // MENYVAL 2 UPREPA TIO GÅNGER
         void menyVal2()
         {
-            Console.Clear();
-            Printer.PrintMessage("RandomText> ");
-            var input_str = Console.ReadLine();
-            for (int i = 0; i < 10; i++)
-            {
-                Console.Write(input_str);
-            }
+            Printer.Clear();
+            Printer.PrintMessage("Enter Random Text> ");
+            var input_str = Printer.PromptText();
+            Printer.Print10(input_str);
         }
 
         // MENYVAL 3 DET TREDJE ORDET
         void menyVal3()
         {
-            Console.Clear();
-            Console.Write("Skriv Dina Ord.....");
-            var input_str = Console.ReadLine();
-            Console.WriteLine(input_str);
+            Printer.Clear();
+            Printer.PrintMessage("Skriv Dina Ord.....");
+            string input_str = Printer.PromptText();
+            string[] inputStrArr = input_str.Split(" ");
+            Printer.PrintMessage(input_str);
 
             // Check thtat our input string is not null or empty as well as has 3 or more words
-            if (!string.IsNullOrEmpty(input_str) && input_str.Length >= 3)
+            if (!string.IsNullOrEmpty(input_str) && inputStrArr.Length >= 3)
             {
                 string[] splitInput = input_str.Split(" ");
-                Console.WriteLine($"Det 3e Ordet: {splitInput[2]}");
+                Printer.PrintMessage($"Det 3e Ordet: {splitInput[2]}");
             }
 
         }
@@ -79,8 +89,8 @@ internal class Program
 
         while (flag)
         {
-            Console.Clear();
-            Printer.PrintMessage("** HUVUDMENU **");
+            Printer.PrintMessage("0 - Exit, 1 - BILJETTER, 2 - Grupp, 3 - X10 GGR, 4 - DET TREDJE ORDET");
+
             var input_str = Console.ReadLine();
             Printer.PrintMessage(input_str);
 
@@ -123,16 +133,41 @@ internal class Program
             }
         }
 
-        System.Console.WriteLine("Programmet avslutas..");
-        Console.Beep();
+
+        Printer.PrintMessage("Programmet avslutas..");
+        Printer.Alert();
     }
 
 }
 
 
-internal class Printer 
-{   
-    internal static void PrintMessage(string message) {
-        Console.Clear(); Console.WriteLine(message); 
+internal class Printer
+{
+    internal static void Clear() { Console.Clear(); }
+
+    internal static void PrintMessage(string message) { Console.Write(message); }
+
+    internal static int PromptNumber()
+    {
+        var input_str = string.Empty;
+        input_str = Console.ReadLine();
+        return int.TryParse(input_str, out var result) ? result : 0;
     }
+
+    internal static string PromptText()
+    {
+        string? input_str = Console.ReadLine();
+        return input_str;
+    }
+
+    internal static void Print10(string message)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write(message);
+        }
+        Console.WriteLine(" ");
+    }
+
+    internal static void Alert() { Console.Beep(); }
 }
