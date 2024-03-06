@@ -22,21 +22,33 @@ internal class Program
         void menyVal1()
         {
             var age = 0;
+            
+            do 
+            { 
+                Printer.PrintMessage("Age: ");
+                age = Printer.PromptNumber();
 
-            Printer.PrintMessage("Age: ");
-                        
-            while(Printer.PromptNumber() <= 0);
+            } while (age <= 0);     
 
             // Check if person is an Adult
             if (age >= 20)
-            {
-                // Make sure person is not a Senior
-                if (age < 65) { Printer.PrintMessage("Standardpris 120kr"); }
-                else { Printer.PrintMessage("Pensionärspris 90kr"); }
+            {  // Make sure person is not a Senior
+                if (age < 65) { 
+                    Printer.PrintMessage("Standardpris 120kr");
+                    gTotalprice += STANDARD_PRICE;
+                } 
+                else 
+                { 
+                    Printer.PrintMessage("Pensionärspris 90kr");
+                    gTotalprice += SENIOR_PRICE;
+                }
+            } 
+            
+            else 
+            { 
+                Printer.PrintMessage("Ungdomspris: 80kr"); 
+                gTotalprice += JUNIOR_PRICE;
             }
-            else { Printer.PrintMessage("Ungdomspris: 80kr"); }
-
-
         }
 
         void subMenu()
@@ -145,7 +157,7 @@ internal class Printer
 {
     internal static void Clear() { Console.Clear(); }
 
-    internal static void PrintMessage(string message) { Console.Write(message); }
+    internal static void PrintMessage(string message) { Console.WriteLine(message); }
 
     internal static int PromptNumber()
     {
