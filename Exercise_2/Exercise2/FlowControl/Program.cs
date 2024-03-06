@@ -1,6 +1,6 @@
-﻿// Lexicon .Net 2024 - Exercise 2 FLOW CONTROL
-// Author: Joseph Ogren Date: 2024-05-06
-//////////////////////////////////////////
+﻿// Lexicon .Net 2024 - Exercise 2 (FLOW CONTROL)
+// Author: Joseph Ogren   Date: 2024-05-06
+////////////////////////////////////////////
 
 
 namespace FlowControl;
@@ -16,7 +16,6 @@ enum MenuOption
 
 internal class Program
 {
-
     const int JUNIOR_PRICE = 80;
     const int STANDARD_PRICE = 120;
     const int SENIOR_PRICE = 90;
@@ -27,26 +26,24 @@ internal class Program
     static void Main(string[] args)
     {
 
-
         // Global Variable
         uint gTotalprice = 0;
-        
+
+
         bool flag = true;
 
         while (flag)
         {
             Printer.PrintMenu(menu);
 
+            // Check if the user input corresponds to any of the Menu enumerables
             if (!Enum.TryParse<MenuOption>(Console.ReadLine(), out var menuOption))
             {
                 Printer.PrintMessage("Invalid input. Please enter a number corresponding to a menu option.");
                 continue;
             }
 
-            //var input_str = Console.ReadLine();
-            //Printer.PrintMessage(input_str);
-            
-
+            // SWITCH on the chosen enumerable menu items
             switch (menuOption)
             {
                 case MenuOption.Exit:
@@ -84,7 +81,7 @@ internal class Program
             }
 
 
-            // CASES FOR THE SWITCH         
+            // Functionality that get called from the Menu Switch
 
             // MENYVAL 1 UNGDOM ELLER PENSIONÄR
             void ShowTicketPrices()
@@ -111,7 +108,7 @@ internal class Program
                         gTotalprice += SENIOR_PRICE;
                     }
                 }
-
+                // Must be a young person
                 else
                 {
                     Printer.PrintMessage("Ungdomspris: 80kr");
@@ -128,7 +125,7 @@ internal class Program
                 var input_str = Printer.PromptText();
                 var nPeople = int.TryParse(input_str, out var result) ? result : 0;
 
-                // Run Menu option 1 (Ticket Purchase) for each person
+                // Show (Ticket Purchase) for each person
                 for (int p = 1; p <= nPeople; p++)
                 {
                     ShowTicketPrices();
@@ -159,8 +156,7 @@ internal class Program
                 // Check thtat our input string is not null or empty as well as has 3 or more words
                 if (!string.IsNullOrEmpty(input_str) && inputStrArr.Length >= 3)
                 {
-                    string[] splitInput = input_str.Split(" ");
-                    Printer.PrintMessage($"Det 3e Ordet: {splitInput[2]}");
+                    Printer.PrintMessage($"Det 3e Ordet: {inputStrArr[2]}");
                 }
 
             }
