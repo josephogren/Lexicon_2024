@@ -1,4 +1,9 @@
-﻿namespace FlowControl;
+﻿// Lexicon .Net 2024 - Exercise 2 FLOW CONTROL
+// Author: Joseph Ogren Date: 2024-05-06
+//////////////////////////////////////////
+
+
+namespace FlowControl;
 
 enum MenuOption
 {
