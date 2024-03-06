@@ -9,8 +9,9 @@ internal class Program
 
 
     static void Main(string[] args)
-    {
-        System.Console.WriteLine("Välkommen till mitt program!");
+    {       
+        
+        Printer.PrintMessage("0 - Exit, 1 - BILJETTER, 2 - Grupp, 3 - X10 GGR, 4 - DET TREDJE ORDET");
 
         // Global Variables
         uint gTotalprice = 0;
@@ -20,39 +21,36 @@ internal class Program
 
         // MENYVAL 1 UNGDOM ELLER PENSIONÄR
         void menyVal1()
-        {
-            Console.Clear();
-            Console.WriteLine("Enter age: ");
+        {            
+            Printer.PrintMessage("Enter age: ");
 
             var input_str = Console.ReadLine();
-
-            var age = int.TryParse(input_str, out var result) ? result : 0;        
-
-
+            var age = int.TryParse(input_str, out var result) ? result : 0;     
 
             if (age >= 20)
-            {
-                if (age < 65) { Console.WriteLine("Standardpris 120kr"); }
-
-                else { Console.WriteLine("Pensionärspris 90kr"); }
+            { if (age < 65) { Console.WriteLine("Standardpris 120kr"); }
+                else { Printer.PrintMessage("Pensionärspris 90kr"); }
             }
-            else { Console.WriteLine("Ungdomspris: 80kr"); }
-
+            else { Printer.PrintMessage("Ungdomspris: 80kr"); }
         }
 
         void subMenu() 
         {
-            int count = 167;
-            Console.WriteLine("Antal i sällskapet: ");
+            int count = 0;
+            Printer.PrintMessage("Antal i sällskapet: ");
+
+            var input_str = Console.ReadLine();
+            var nPurchasedTickets = int.TryParse(input_str, out var result) ? result : 0;
+
             gTotalprice += STANDARD_PRICE;
-            Console.WriteLine($"TICKETS: {count}, TOTAL PRICE: {gTotalprice}");
+            Console.WriteLine($"TICKETS: {nPurchasedTickets}, TOTAL PRICE: {gTotalprice}");
         }
 
         // MENYVAL 2 UPREPA TIO GÅNGER
         void menyVal2()
         {
             Console.Clear();
-            Console.WriteLine("RandomText> ");
+            Printer.PrintMessage("RandomText> ");
             var input_str = Console.ReadLine();
             for (int i = 0; i < 10; i++)
             {
@@ -82,10 +80,9 @@ internal class Program
         while (flag)
         {
             Console.Clear();
-            Console.WriteLine("** HUVUDMENU **");
-            Console.WriteLine("Skriv in siffror..");
+            Printer.PrintMessage("** HUVUDMENU **");
             var input_str = Console.ReadLine();
-            Console.WriteLine(input_str);
+            Printer.PrintMessage(input_str);
 
             var parsedInputString = int.TryParse(input_str, out var result) ? result : 0;
 
@@ -97,31 +94,31 @@ internal class Program
 
 
                 case 1:
-                    Console.WriteLine("** BUY YOUR TICKETS! **");
+                    Printer.PrintMessage("** BUY YOUR TICKETS! **");
                     menyVal1();
                     break;
 
 
                 case 2:
-                    Console.WriteLine("Paketpris");
+                    Printer.PrintMessage("Paketpris");
                     subMenu();
                     break;
 
 
                 case 3:
-                    Console.WriteLine("Upprepa 10 ggr");
+                    Printer.PrintMessage("Upprepa 10 ggr");
                     menyVal2();
                     break;
 
 
                 case 4:
-                    Console.WriteLine("Menyval 3: Det tredje ordet");
+                    Printer.PrintMessage("Menyval 3: Det tredje ordet");
                     menyVal3();
                     break;
 
 
                 default:
-                    Console.WriteLine("Felaktig inmatning!");
+                    Printer.PrintMessage("Felaktig inmatning!");
                     break;
             }
         }
@@ -133,7 +130,9 @@ internal class Program
 }
 
 
-internal class Printer
-{
-
+internal class Printer 
+{   
+    internal static void PrintMessage(string message) {
+        Console.Clear(); Console.WriteLine(message); 
+    }
 }
