@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise3_new
 {
@@ -12,9 +9,17 @@ namespace Exercise3_new
         {
             Console.WriteLine("*** EXERCISE 3 ***");
 
-            Person p = new Person(18, "Alice");
+            List<Person> list = new List<Person>();
 
-            Console.WriteLine(p);
+            for (int i = 0; i < 10; i++)
+            {
+                list.Add(new Person(1+i, "Charlie-"+i)); 
+            }
+
+            foreach (var p in list)
+            {
+                Console.WriteLine(p); 
+            }
 
             // *pause program*
             Console.Read();
