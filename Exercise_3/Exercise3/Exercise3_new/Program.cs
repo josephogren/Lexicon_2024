@@ -9,27 +9,39 @@ namespace Exercise3_new
         {
             Console.WriteLine("*** EXERCISE 3 ***");
 
-            List<Person> list = new List<Person>();
-
+            /* Create list for Persons and Animals */
+            List<Person> listPersons = new List<Person>();
+            List<Animal> listAnimals = new List<Animal>();
+            
+            /* Create a handler for Persons */
             PersonHandler hPerson = new PersonHandler();
 
+            
+            //** SEEDING ANIMALS **//
+            Animal horse = new Horse();
+            Animal dog = new Dog();
+            Animal hedgehog = new Hedgehog();
+            Animal wolf = new Wolf();
+            Animal bird = new Bird();
 
-            var p1 = hPerson.CreatePerson(1433, "tt", "bbb", 2.2, 3.3);
 
-            Console.WriteLine(p1);
+            hPerson.SeedPersons(listPersons);
+            
 
+            //** PRINT PERSONS **//
+            foreach (Person person in listPersons) 
+            {
+                Console.WriteLine(person);    
+            }
+            //** PRINT ANIMALS **//
+            foreach (Animal animal in listAnimals)
+            {
+                Console.WriteLine(animal);
+            }
 
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    list.Add(new Person());
-            ////}
+            /// END PROGRAM ///
 
-            //foreach (var p in list)
-            //{
-            //    Console.WriteLine(p);
-            //}
-
-            // *pause program*
+            /* pause program */
             Console.Read();
             Console.Beep();
         }

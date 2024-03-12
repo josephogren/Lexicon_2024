@@ -25,7 +25,7 @@
         public string lName
         {
             get => _lName;
-            set => _fName = value;
+            set => _lName = value;
             //set { if (lName.Length >= 2 && lName.Length <= 10) _lName = value; }
         }
 
