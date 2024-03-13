@@ -23,6 +23,16 @@ namespace Exercise3_new
             Animal hedgehog = new Hedgehog();
             Animal wolf = new Wolf();
             Animal bird = new Bird();
+            Animal worm = new Worm();
+
+            Bird flamingo = new Bird();
+            Bird pelican = new Bird();
+            Bird parroquet = new Bird();
+
+            Wolfman wolfman= new Wolfman();
+
+            listAnimals.Add(horse); listAnimals.Add(dog); listAnimals.Add(hedgehog); listAnimals.Add(wolf);
+            listAnimals.Add(bird); listAnimals.Add(worm); listAnimals.Add(wolfman); listAnimals.Add(flamingo); listAnimals.Add(pelican); listAnimals.Add(parroquet);
 
 
             hPerson.SeedPersons(listPersons);

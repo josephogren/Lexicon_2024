@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Xml.Linq;
 
 namespace Exercise3_new
 {
 
     internal abstract class Animal
     {
-        private readonly string _name;
-        private readonly string _description;
+        private string _name;
+        private int _age;
+        private string _description;
 
 
         public abstract void DoSound();
 
         public Animal() { }
-        public Animal(string name, string description)
+        public Animal(string name, int age, string description)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -25,8 +27,16 @@ namespace Exercise3_new
             }
 
             _name = name;
+            _age = age;
             _description = description;
         }
+
+        public override string ToString()
+        {
+            string animal_str = $"{_name}, {_age}; {_description}";
+            return animal_str;
+        }
+
 
     }
 
@@ -34,6 +44,7 @@ namespace Exercise3_new
 
     internal class Horse : Animal
     {
+        string def_property = "isHorse";
         public override void DoSound()
         {
             Console.WriteLine("Horse sound..");
@@ -41,8 +52,9 @@ namespace Exercise3_new
     }
 
     internal class Dog : Animal
-
-    { public override void DoSound() 
+    {
+        string def_property = "isDog";
+        public override void DoSound()
         {
             Console.WriteLine("Dog soiund..");
         }
@@ -50,6 +62,7 @@ namespace Exercise3_new
 
     internal class Hedgehog : Animal
     {
+        string def_property = "isHedgehog";
         public override void DoSound()
         {
             Console.WriteLine("Hedgehog soiund..");
@@ -58,20 +71,57 @@ namespace Exercise3_new
 
     internal class Wolf : Animal
     {
+        string def_property = "isWolf";
         public override void DoSound()
         {
             Console.WriteLine("Wolf sound..");
         }
     }
 
-    internal class Bird : Animal
+    internal class Wolfman : Wolf, IPerson
     {
-        public override void DoSound()
+        public void Talk()
         {
-            Console.WriteLine("Bird soiund..");
+            Console.WriteLine("Wolfman talks!"); ;
         }
     }
 
+    internal class Bird : Animal
+    {
+        string def_property = "isBird";
+        public override void DoSound()
+        {
+            Console.WriteLine("Bird sound..");
+        }
+    }
 
+    internal class Worm : Animal
+    {
+        string def_property = "isWorm";
+        public override void DoSound()
+        {
+            Console.WriteLine("Word sound..");
+        }
+    }
+
+    internal class Pelican : Bird
+    {
+        string def_property = "isPelican";
+        public string Property { get { return def_property; } }
+
+    }
+
+    internal class Flamingo : Bird
+    {
+        string def_property = "isFlamingo";
+        public string Property { get { return def_property; } }
+    }
+
+    internal class Parroquet : Bird
+    {
+        private string def_property = "isParroquet";
+        public string Property { get { return def_property; } }
+
+    }
 
 }
