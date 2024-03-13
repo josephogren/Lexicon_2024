@@ -30,9 +30,9 @@ namespace Exercise3_new
             _description = description;
         }
 
-        public string Stats()
+        public virtual string Stats()
         {
-            string stats = $"DESCR: {_description} NAME: {_name}";
+            string stats = $"NAME: {_name},  DESCR: {_description},  AGE: {_age}, ";
             return stats;
         }
 
@@ -55,6 +55,8 @@ namespace Exercise3_new
         {
         }
 
+        public override string Stats() { return base.Stats() + $" U-PROP: {unique_property}"; }
+
         public override void DoSound()
         {
             Console.WriteLine("Horse sound..");
@@ -68,7 +70,8 @@ namespace Exercise3_new
         public Dog(string name, int age, string description) : base(name, age, description)
         { }
 
-        /* override */
+        /* overrides */
+        public override string Stats() { return base.Stats() + $" U-PROP: {unique_property}"; }
         public override void DoSound()
         {
             Console.WriteLine("Dog sound..");
@@ -83,6 +86,8 @@ namespace Exercise3_new
         {
         }
 
+        /* overrides */
+        public override string Stats() { return base.Stats() + $" U-PROP: {unique_property}"; }
         public override void DoSound()
         {
             Console.WriteLine("Hedgehog sound..");
@@ -97,6 +102,8 @@ namespace Exercise3_new
         {
         }
 
+        /* overrides */
+        public override string Stats() { return base.Stats() + $" U-PROP: {unique_property}"; }
         public override void DoSound()
         {
             Console.WriteLine("Wolf sound..");
@@ -123,6 +130,8 @@ namespace Exercise3_new
         {
         }
 
+        /* overrides */
+        public override string Stats() { return base.Stats() + $" U-PROP: {unique_property}"; }
         public override void DoSound()
         {
             Console.WriteLine("Bird sound..");
@@ -137,6 +146,8 @@ namespace Exercise3_new
         {
         }
 
+        /* overrides */
+        public override string Stats() { return base.Stats() + $" U-PROP: {unique_property}"; }
         public override void DoSound()
         {
             Console.WriteLine("Word sound..");
