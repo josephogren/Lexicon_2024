@@ -65,7 +65,7 @@ namespace Exercise3_new
                     wlf.Talk();                
                 }
             }
-
+            
 
             /* print list of errors */
             foreach (var error in errors)
