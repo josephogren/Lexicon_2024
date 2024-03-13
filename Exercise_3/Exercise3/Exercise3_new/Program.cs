@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 
 namespace Exercise3_new
 {
@@ -8,54 +7,71 @@ namespace Exercise3_new
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("*** EXERCISE 3 ***");
 
-            /* Create list for Persons and Animals */
-            List<Person> listPersons = new List<Person>();
-            List<Animal> listAnimals = new List<Animal>();
-            
+            /* Create and populate list of UserErrors */
+            List<UserError> errors = new List<UserError>
+            {
+                new NumericInputError(),
+                new TextInputError(),
+                new CustomError1(),
+                new CustomError2(),
+                new CustomError3()
+            };
+
             /* Create a handler for Persons */
-            PersonHandler hPerson = new PersonHandler();
+            PersonHandler hPerson = new PersonHandler();      
 
-            
-            //** SEEDING ANIMALS **//
-            Animal horse = new Horse("Jasper", 15, "horsie");
-            Animal dog = new Dog("Fido", 4, "doggie");
-            Animal hedgehog = new Hedgehog("Pellur", 2, "hedgy");
-            Animal wolf = new Wolf("Killer", 7, "wolfy");
-            Animal bird = new Bird("Pippi", 3, "birdy");
-            Animal worm = new Worm("Slinky", 1, "wormlike");
+            /* Create list of Persons */
+            List<Person> listPersons = new List<Person>
+            {
+                hPerson.CreatePerson(11, "Alice", "AAA", 2.2, 3.3),
+                hPerson.CreatePerson(32, "Bob", "BB", 2.2, 3.3),
+                hPerson.CreatePerson(45, "Charlie", "CCCC", 2.2, 3.3),
+        };
 
-            Bird flamingo = new Bird("PippiFlamingo", 3, "birdy");
-            Bird pelican = new Bird("PippiPelican", 3, "birdy");
-            Bird parroquet = new Bird("Papegoja", 3, "birdy");
+        /* Create list of Animals */
+        List<Animal> listAnimals = new List<Animal>
+            {
+                new Horse("Jasper", 15, "horsie"),
+                new Dog("Fido", 4, "doggie"),
+                new Hedgehog("Pellur", 2, "hedgy"),
+                new Wolf("Killer", 7, "wolfy"),
+                new Bird("Pippi", 3, "birdy"),
+                new Worm("Slinky", 1, "wormlike"),
 
-            Wolfman wolfman= new Wolfman("Ajax", 44, "Half man, half wolf");
+                new Bird("PippiFlamingo", 3, "birdy"),
+                new Bird("PippiPelican", 3, "birdy"),
+                new Bird("Papegoja", 3, "birdy"),
 
-            listAnimals.Add(horse); listAnimals.Add(dog); listAnimals.Add(hedgehog); listAnimals.Add(wolf);
-            listAnimals.Add(bird); listAnimals.Add(worm); listAnimals.Add(wolfman); listAnimals.Add(flamingo); listAnimals.Add(pelican); listAnimals.Add(parroquet);
+                new Wolfman("Ajax", 44, "Half man, half wolf"),
+        };
 
 
-            hPerson.SeedPersons(listPersons);
-            
 
-            //** PRINT PERSONS **//
-            //foreach (Person person in listPersons) 
-            //{
-            //    Console.WriteLine(person);    
-            //}
-            
-            //** PRINT ANIMALS **//
+
+            /* print list of persons */
+            foreach (Person person in listPersons)
+            {
+                Console.WriteLine(person);
+            }
+            /* print list of animals */
             foreach (Animal animal in listAnimals)
             {
                 Console.WriteLine(animal.Stats());
             }
+/* print list of errors */
+foreach (var error in errors)
+{
+    Console.WriteLine(error.UEMessage());
+}
 
-            /// END PROGRAM ///
+/// END PROGRAM ///
 
-            /* pause program */
-            Console.Read();
-            Console.Beep();
+/* pause program */
+Console.Read();
+Console.Beep();
         }
     }
 }

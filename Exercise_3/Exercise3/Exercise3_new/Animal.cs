@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml.Linq;
 
 namespace Exercise3_new
 {
@@ -66,8 +65,8 @@ namespace Exercise3_new
     {
         string unique_property = "isDog";
 
-        public Dog( string name, int age, string description ) : base(name, age, description)
-        {  }
+        public Dog(string name, int age, string description) : base(name, age, description)
+        { }
 
         /* override */
         public override void DoSound()
