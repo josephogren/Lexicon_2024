@@ -49,8 +49,6 @@ namespace Exercise3_new
         };
 
 
-
-
             /* print list of persons */
             foreach (Person person in listPersons)
             {
@@ -60,18 +58,25 @@ namespace Exercise3_new
             foreach (Animal animal in listAnimals)
             {
                 Console.WriteLine(animal.Stats());
+                if(animal.GetType() == typeof(Wolfman)) 
+                {
+                    // Wolman.Talk();
+                }
             }
-/* print list of errors */
-foreach (var error in errors)
-{
-    Console.WriteLine(error.UEMessage());
-}
 
-/// END PROGRAM ///
+            
 
-/* pause program */
-Console.Read();
-Console.Beep();
+            /* print list of errors */
+            foreach (var error in errors)
+            {
+                Console.WriteLine(error.UEMessage());
+            }
+
+            /// END PROGRAM ///
+
+            /* pause program */
+            Console.Read();
+            Console.Beep();
         }
     }
 }
