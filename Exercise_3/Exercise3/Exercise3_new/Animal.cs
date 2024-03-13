@@ -111,7 +111,7 @@ namespace Exercise3_new
 
         public void Talk()
         {
-            Console.WriteLine("Wolfman talks!"); ;
+            Console.WriteLine("WolfMan talks!"); ;
         }
     }
 

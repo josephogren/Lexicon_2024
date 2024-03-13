@@ -44,10 +44,10 @@ namespace Exercise3_new
                 new Bird("PippiFlamingo", 3, "birdy"),
                 new Bird("PippiPelican", 3, "birdy"),
                 new Bird("Papegoja", 3, "birdy"),
-
-                new Wolfman("Ajax", 44, "Half man, half wolf"),
+                
         };
-
+            Animal WolfMan = new Wolfman("Ajax", 44, "Half man, half wolf");
+            listAnimals.Add(WolfMan);
 
             /* print list of persons */
             foreach (Person person in listPersons)
@@ -58,9 +58,10 @@ namespace Exercise3_new
             foreach (Animal animal in listAnimals)
             {
                 Console.WriteLine(animal.Stats());
-                if(animal.GetType() == typeof(Wolfman)) 
+                if(animal is IPerson) 
                 {
-                    // Wolman.Talk();
+                    var w = (IPerson)animal;
+                    w.Talk();
                 }
             }
 

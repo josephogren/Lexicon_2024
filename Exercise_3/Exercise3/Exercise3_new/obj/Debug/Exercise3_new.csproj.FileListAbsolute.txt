@@ -1,0 +1,8 @@
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\bin\Debug\Exercise3_new.exe.config
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\bin\Debug\Exercise3_new.exe
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\bin\Debug\Exercise3_new.pdb
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\obj\Debug\Exercise3_new.csproj.AssemblyReference.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\obj\Debug\Exercise3_new.csproj.SuggestedBindingRedirects.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\obj\Debug\Exercise3_new.csproj.CoreCompileInputs.cache
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\obj\Debug\Exercise3_new.exe
+C:\Dev\Repo\Lexicon_2024\Exercise_3\Exercise3\Exercise3_new\obj\Debug\Exercise3_new.pdb
