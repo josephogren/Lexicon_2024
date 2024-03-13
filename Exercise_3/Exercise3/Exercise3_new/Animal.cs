@@ -50,7 +50,12 @@ namespace Exercise3_new
 
     internal class Horse : Animal
     {
-        string def_property = "isHorse";
+        string unique_property = "isHorse";
+
+        public Horse(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("Horse sound..");
@@ -59,25 +64,40 @@ namespace Exercise3_new
 
     internal class Dog : Animal
     {
-        string def_property = "isDog";
+        string unique_property = "isDog";
+
+        public Dog( string name, int age, string description ) : base(name, age, description)
+        {  }
+
+        /* override */
         public override void DoSound()
         {
-            Console.WriteLine("Dog soiund..");
+            Console.WriteLine("Dog sound..");
         }
     }
 
     internal class Hedgehog : Animal
     {
-        string def_property = "isHedgehog";
+        string unique_property = "isHedgehog";
+
+        public Hedgehog(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
         public override void DoSound()
         {
-            Console.WriteLine("Hedgehog soiund..");
+            Console.WriteLine("Hedgehog sound..");
         }
     }
 
     internal class Wolf : Animal
     {
-        string def_property = "isWolf";
+        string unique_property = "isWolf";
+
+        public Wolf(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("Wolf sound..");
@@ -86,6 +106,10 @@ namespace Exercise3_new
 
     internal class Wolfman : Wolf, IPerson
     {
+        public Wolfman(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
         public void Talk()
         {
             Console.WriteLine("Wolfman talks!"); ;
@@ -94,7 +118,12 @@ namespace Exercise3_new
 
     internal class Bird : Animal
     {
-        string def_property = "isBird";
+        string unique_property = "isBird";
+
+        public Bird(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("Bird sound..");
@@ -103,7 +132,12 @@ namespace Exercise3_new
 
     internal class Worm : Animal
     {
-        string def_property = "isWorm";
+        string unique_property = "isWorm";
+
+        public Worm(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
         public override void DoSound()
         {
             Console.WriteLine("Word sound..");
@@ -112,21 +146,39 @@ namespace Exercise3_new
 
     internal class Pelican : Bird
     {
-        string def_property = "isPelican";
-        public string Property { get { return def_property; } }
+
+        string unique_property = "isPelican";
+
+        public Pelican(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
+        public string Property { get { return unique_property; } }
 
     }
 
     internal class Flamingo : Bird
     {
-        string def_property = "isFlamingo";
-        public string Property { get { return def_property; } }
+
+        string unique_property = "isFlamingo";
+
+        public Flamingo(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
+        public string Property { get { return unique_property; } }
     }
 
     internal class Parroquet : Bird
     {
-        private string def_property = "isParroquet";
-        public string Property { get { return def_property; } }
+
+        private string unique_property = "isParroquet";
+
+        public Parroquet(string name, int age, string description) : base(name, age, description)
+        {
+        }
+
+        public string Property { get { return unique_property; } }
 
     }
 
