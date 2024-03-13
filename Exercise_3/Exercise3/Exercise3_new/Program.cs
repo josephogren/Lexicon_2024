@@ -48,6 +48,7 @@ namespace Exercise3_new
         };
             Animal WolfMan = new Wolfman("Ajax", 44, "Half man, half wolf");
             listAnimals.Add(WolfMan);
+            
 
             /* print list of persons */
             foreach (Person person in listPersons)
@@ -58,13 +59,12 @@ namespace Exercise3_new
             foreach (Animal animal in listAnimals)
             {
                 Console.WriteLine(animal.Stats());
-                if(animal is IPerson) 
+                
+                if(animal is IPerson wlf) 
                 {
-                    var w = (IPerson)animal;
-                    w.Talk();
+                    wlf.Talk();                
                 }
             }
-
             
 
             /* print list of errors */
