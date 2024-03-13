@@ -18,15 +18,15 @@
         public string fName
         {
             get => _fName;
-            set => _fName = value;
-            //set { if (fName.Length >= 2 && fName.Length <= 10) _fName = value;  }
+            
+            set { if (value.Length >= 2 && value.Length <= 10) _fName = value;  }
         }
 
         public string lName
         {
             get => _lName;
-            set => _lName = value;
-            //set { if (lName.Length >= 2 && lName.Length <= 10) _lName = value; }
+            
+            set { if (value.Length >= 2 && value.Length <= 10) _lName = value; }
         }
 
         public Person(int age, string fName = "N/A", string lName = "N/A", double height = 0.0, double weight = 0.0)
