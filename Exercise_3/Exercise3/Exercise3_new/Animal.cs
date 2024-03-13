@@ -31,6 +31,12 @@ namespace Exercise3_new
             _description = description;
         }
 
+        public string Stats()
+        {
+            string stats = $"DESCR: {_description} NAME: {_name}";
+            return stats;
+        }
+
         public override string ToString()
         {
             string animal_str = $"{_name}, {_age}; {_description}";
