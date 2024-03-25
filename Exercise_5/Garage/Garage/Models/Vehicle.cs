@@ -21,5 +21,23 @@ namespace Garage.Models
             this.nWheels= 4;
         }
 
+        public void Print()
+        {
+            System.Console.WriteLine($"REGNR:{registrationNumber},  COLOR:{this.color}, WHEELS:{nWheels}");
+        }
+
     }
+
+
+    internal class Car : Vehicle
+    {
+        public Car()
+        {
+            this.registrationNumber= null;
+        }
+
+            
+    }
+
+
 }
