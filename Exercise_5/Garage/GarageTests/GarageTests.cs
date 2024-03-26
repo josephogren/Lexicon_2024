@@ -18,6 +18,12 @@ namespace GarageTests
             throw new NotImplementedException(); 
         }
 
+        [Fact]
+        public void CheckThatGarageHandlerExists() 
+        { 
+            throw new NotImplementedException(); 
+        }
+
                 
 
     }
