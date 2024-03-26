@@ -17,7 +17,7 @@ namespace Garage
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.SetWindowSize(800, 600);
-            //Console.Title = title;
+            Console.Title = title;
 
 
             ////run
