@@ -77,11 +77,11 @@ namespace GarageApp.Models
             return new VehiclesEnumerator(this);
         }
 
-        //public bool MoveNext()
-        //{
-        //    nIndex++;
-        //    return (nIndex < parkedVehicles.items.Length);
-        //}
+        public bool MoveNext()
+        {
+            nIndex++;
+            return (nIndex < parkedVehicles.items.Length);
+        }
 
         public void Reset() { }
         public void Dispose() { }
@@ -106,11 +106,11 @@ namespace GarageApp.Models
                 this.garage = garage;
             }
 
-            //public bool MoveNext()
-            //{
-            //    nIndex++;
-            //    return (nIndex < parkedVehicles.items.Length);
-            //}
+            public bool MoveNext()
+            {
+                nIndex++;
+                return (nIndex < parkedVehicles.items.Length);
+            }
 
             public int Current => parkedVehicles.items[nIndex];
         }
