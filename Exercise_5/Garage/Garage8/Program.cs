@@ -29,7 +29,8 @@ namespace GarageApp
 
         static string menu = $"1 - New Garage, 2 - Add/Remove, 3 - List All, 4 - Search, 5 - Quit";
 
-        static Garage ourGarage;
+        static Garage<Vehicle>? ourGarage;
+        static GarageHandler gary = new GarageHandler(ourGarage);
         static IUI prompt = new Prompt();
 
 
@@ -38,6 +39,12 @@ namespace GarageApp
             Initialize();
             
             prompt.PrintText(title);
+
+            Vehicle vehicle = new Boat();
+            vehicle.PrintVehicle();
+
+            gary.Park(vehicle);
+            
 
             ////run
             do

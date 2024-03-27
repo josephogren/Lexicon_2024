@@ -12,21 +12,35 @@ namespace GarageApp.Handlers
 {
     public class GarageHandler
     {
-        private Garage garage;
+        
+        public Garage<Vehicle> garage;
 
-        public GarageHandler() { }
-        public GarageHandler(string name)
+        
+        public GarageHandler() 
         {
-                
+        
+        }
+
+        public GarageHandler(Garage<Vehicle> garage)
+        {
+                this.garage = garage;
         }
 
 
-        public Garage Build(int capacity)
+        public Garage<Vehicle> Build(int capacity)
         {                    
-            return new Garage(capacity);
+            garage = new Garage<Vehicle>(capacity);
+            return garage;
         }
 
-        public void ListAllVehicles(Garage garage)
+        // Methods
+
+        public void Park(Vehicle vehicle)
+        {
+            garage.AddVehicle(vehicle);
+        }
+
+        public void ListAllVehicles()
         {
             foreach (Vehicle v in garage)
             {

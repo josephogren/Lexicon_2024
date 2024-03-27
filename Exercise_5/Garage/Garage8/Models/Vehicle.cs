@@ -83,16 +83,11 @@ namespace GarageApp.Models
 
 
 
-
-
-
-
-
     /* Subclasses to Vehicle */
 
 
     // THE AUTOMOBILE / DAS AUTO
-    public class Car : Vehicle
+    public class Car : Vehicle, IVehicle
     {   
         private cGearBoxType gear;
 
@@ -113,12 +108,18 @@ namespace GarageApp.Models
         
     }
 
-    public class Motorcycle : Vehicle { }
+    public class Motorcycle : Vehicle, IVehicle 
+    {
+    
+    }
 
-    public class Bus : Vehicle { }
+    public class Bus : Vehicle, IVehicle 
+    { 
+
+    }
 
     // WATER VESSSEL (NO WHEELS)
-    public class Boat : Vehicle
+    public class Boat : Vehicle, IVehicle
     {
 
         public bool hasRudder {  get; set; }
@@ -141,7 +142,7 @@ namespace GarageApp.Models
     }
 
     /* AIRPLANE - FLYING MACHINES */
-    public class Airplane : Vehicle
+    public class Airplane : Vehicle, IVehicle
     {
 
         private bool hasWings = true;

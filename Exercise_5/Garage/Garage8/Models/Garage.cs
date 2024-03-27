@@ -9,28 +9,45 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Models
 {
-    public abstract class Garage<V> : IEnumerable<V> where V : Vehicle
+    public  class Garage<V> : IEnumerable<V> where V : Vehicle
     {
+        // MEMBERS
+        private int capacity = 1;
+        private Vehicle[] parkedVehicles;
 
-        internal int capacity = 1;
-        internal Vehicle[] parkedVehicles;
-       
 
-
-        public void AddVehicle(Vehicle vehicle)
+        public Garage(int capacity)
         {
-            //listOfVehicles.Add(vehicle);
+            this.capacity = capacity;
+
+            Vehicle vehicle = new Car();
+
+            this.parkedVehicles = new Vehicle[capacity];
+            parkedVehicles[capacity] = vehicle;
         }
+
+
+
+
+
+        // METHODS
 
         public IEnumerator<V> GetEnumerator()
         {
             throw new NotImplementedException();
         }
 
+        public void AddVehicle(Vehicle vehicle)
+        {
+            
+            parkedVehicles[capacity] = vehicle;
+        }
+
         public void RemoveVehicle(Vehicle vehicle)
         {
-            //listOfVehicles.Remove(vehicle);
+            parkedVehicles[capacity] = null;       
         }
+
 
 
         public void ShowAllVehicles()
@@ -50,15 +67,3 @@ namespace GarageApp.Models
     }
 }
 
-
-public class Garage : Garage<Vehicle>
-{
-
-    public Garage(int capacity)
-    {
-
-        this.capacity = capacity;
-        this.parkedVehicles = new Vehicle[capacity];
-
-    }
-}
