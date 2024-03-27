@@ -10,48 +10,55 @@ namespace Garage8.Interfaces
     {
 
         void Prompt(string prompt);               
-        string PromptInput();
+        string ValidateUserInput(string input);
         void Alert(string alert);
         void ShowMessage(string msg);
         void PrintText(string text);
-        int getUserInput();
+        string getUserInput();
         char getReply(); 
 
     }
 
 
-    internal class Prompt : IUI
+    public class Prompt : IUI
     {
 
-        void IUI.Prompt(string prompt)
+        string ValidateUserInput(string user_input)
         {
-            Console.WriteLine(prompt);
-        }
-
-        void IUI.Alert(string alert) { Console.WriteLine(alert); }
-
-        string IUI.PromptInput()
-        {
-            var input = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(input) && string.IsNullOrWhiteSpace(input))
+            
+            if (string.IsNullOrEmpty(user_input) && string.IsNullOrWhiteSpace(user_input))
             {
                 throw new FormatException("Syntax Error");
             }
 
-            return input;
+            return user_input;
 
         }
 
-        void IUI.ShowMessage(string msg) { Console.Write(msg); }
-        void IUI.PrintText(string text) { Console.WriteLine(text); }
-
-        int IUI.getUserInput() { return Console.Read(); }
-        char IUI.getReply()
+        string getUserInput() 
         {
-            var input = Console.ReadKey();
-            return input.KeyChar;
+            var string_input = Console.ReadLine();
+            return ValidateUserInput(string_input);            
         }
+        char getReply()
+        {
+            var key_input = Console.ReadKey();
+            return IUI.ValidateUserInput(key_input);
+            
+        }
+
+
+        void Prompt(string prompt)
+        {
+            Console.WriteLine(prompt);
+        }
+
+        void Alert(string alert) { Console.WriteLine(alert); }
+
+
+        void ShowMessage(string msg) { Console.Write(msg); }
+        void PrintText(string text) { Console.WriteLine(text); }
+
 
     }
 }

@@ -83,7 +83,7 @@ namespace GarageApp
                 case 2:
                     prompt.PrintText("ADD OR REMOVE VEHICLES IN GARAGE");
                     prompt.Prompt("1 - Add, 2 - Remove");
-                    var ans = prompt.getReply();
+                    var ans = prompt.getUserInput();
                     if (ans == 1)
                     {
                         ourGarage.AddVehicle(new Models.Vehicle());
