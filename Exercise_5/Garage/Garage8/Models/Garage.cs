@@ -1,5 +1,6 @@
 ﻿using GarageApp.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,27 +9,22 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Models
 {
-    public abstract class Garage<V>
+    public abstract class Garage<V> : IEnumerable<V> where V : Vehicle
     {
 
-        //private readonly V _value;
-        //private readonly string _name;
-        //private readonly string _description;
-        //private readonly string _type;
-        
-
-        private List<Vehicle> listOfVehicles;
-
-        public Garage()
-        {
-                listOfVehicles = new List<Vehicle>();
-            
-        }
+        internal int capacity = 1;
+        internal Vehicle[] parkedVehicles;
+       
 
 
         public void AddVehicle(Vehicle vehicle)
         {
             //listOfVehicles.Add(vehicle);
+        }
+
+        public IEnumerator<V> GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
 
         public void RemoveVehicle(Vehicle vehicle)
@@ -47,20 +43,22 @@ namespace GarageApp.Models
             
         }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
 
-public class Garage : Garage<object>
+public class Garage : Garage<Vehicle>
 {
 
-    private List<Vehicle> listOfVehicles;
-    //private Garage<Vehicle> garage;
-    //private object g;
-
-    public Garage(List<Vehicle> list)
+    public Garage(int capacity)
     {
-        this.listOfVehicles = list;
-        //this.g = g;
+
+        this.capacity = capacity;
+        this.parkedVehicles = new Vehicle[capacity];
+
     }
 }

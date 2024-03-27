@@ -14,7 +14,6 @@ namespace Garage8.Interfaces
         //string Name { get; }    
         //string Description { get; }
 
-
         public int? VIN { get; set; }           /* Vehicle Identification Number (unique int) */
 
         public string vMake { get; set; }      /* The make of the vechicle  */
@@ -25,15 +24,9 @@ namespace Garage8.Interfaces
         public int nWheels { get; set; }        /* The number of wheels on the vehicle (can be 0) */
 
         public vEngineType vEngineType { get; set; }    /* The type of propulsion technology for the vehicle */
+               
 
-
-
-
-
-        public void Print()
-        {            
-           
-        }
+        public void PrintVehicle();
 
     }
 }

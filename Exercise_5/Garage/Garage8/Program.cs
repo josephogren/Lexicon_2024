@@ -1,112 +1,100 @@
-﻿namespace GarageApp
-{
+﻿using Garage8.Interfaces;
+using GarageApp.Handlers;
+using GarageApp.Models;
+using System.Net.Quic;
+using System.Net.Security;
+using System.Reflection.Metadata.Ecma335;
 
+namespace GarageApp
+{
+    //// ENVIRONMENT AND DIRECTORY INFO
+    //static string CurrentWorkingDirectory = Environment.CurrentDirectory;
+    //static string SolutionFolder = Directory.GetParent(CurrentWorkingDirectory).Parent.Parent.Parent.FullName;
+    //static string MainProjectFolder = Directory.GetParent(CurrentWorkingDirectory).Parent.Parent.FullName;
+
+    //string[] directories = Directory.GetDirectories(SolutionFolder);
+    //static FileInfo[] fileList = Directory.GetParent(MainProjectFolder).GetFiles();
+    //string[] projectFiles = Directory.EnumerateFiles(MainProjectFolder).ToArray();
 
 
     internal class Program
     {
 
-
-
         // ## DEFINES AND CONSTS ##
         const int exercise = 5; // the current exercise
-        string input = null;
-        bool quit = false;
-        int result = 0;
+        static string input = null;
+        static bool quit = false;
+        static int result = 0;
         static string title = $"Lexicon 2024 .Net - Övning{exercise} (Garage)";
 
+        static string menu = $"1 - New Garage, 2 - Add/Remove, 3 - List All, 4 - Search, 5 - Quit";
 
-        // ENVIRONMENT AND DIRECTORY INFO
-        static string CurrentWorkingDirectory = Environment.CurrentDirectory;
-        static string SolutionFolder = Directory.GetParent(CurrentWorkingDirectory).Parent.Parent.Parent.FullName;
-        static string MainProjectFolder = Directory.GetParent(CurrentWorkingDirectory).Parent.Parent.FullName;
-
-        string[] directories = Directory.GetDirectories(SolutionFolder);
-        static FileInfo[] fileList = Directory.GetParent(MainProjectFolder).GetFiles();
-        string[] projectFiles = Directory.EnumerateFiles(MainProjectFolder).ToArray();
-
-
-        static void Initialize()
-        {
-            ////initialize
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.SetWindowSize(800, 600);
-            Console.Title = title;
-        }
+        static Garage ourGarage;
 
 
         static void Main(string[] args)
         {
+            Initialize();
 
-
-
-
-
-           
-
+            IUI prompt = new Prompt();
 
             ////run
 
+            prompt.PrintText(title);
+            prompt.PrintText(menu);
+            var user_input = prompt.getReply();
+            int ui = (int)user_input;
 
+            switch(ui)
+            {
 
-            foreach (FileInfo file in fileList) { Console.WriteLine(file); }
+                case 1:
+                    prompt.ShowMessage("CREATING A NEW GARAGE");
+                    prompt.Prompt("Capacity: ");
+                    var cap = prompt.getReply();
+                    GarageHandler gh = new GarageHandler();
+                    gh.Build(cap);
+                    break;
+                case 2:
+                    prompt.ShowMessage("ADD OR REMOVE VEHICLES IN GARAGE");
+                    prompt.Prompt("1 - Add, 2 - Remove");
+                    var ans = prompt.getReply();    
+                    if(ans == 1)
+                    {
+                        ourGarage.AddVehicle(new Models.Vehicle());
+                    }
+                    if(ans == 2)
+                    {
+                        prompt.Prompt("Enter Vehicle to remove: ");
+                        var n  = (int)prompt.getReply();
+                        foreach (Vehicle v in ourGarage)
+                        {
+                            if (v.VIN == n)
+                            {
+                                ourGarage.RemoveVehicle(v);
+                            }
+                        }
+                        
+                    }
+                    break;
+                case 3:
+                    prompt.ShowMessage("SHOWING ALL VEHICLES IN GARAGE");
+                    break;
+                case 4:
+                    prompt.ShowMessage("SEARCH FOR VEHICLE IN GARAGE");
+                    break;
+                case 5:
+                    prompt.ShowMessage("ARE YOU SURE YOU WANT TO QUIT? (y/n)"); 
+                    if (prompt.getReply() == 'y')
+                    {
+                        quit = true;
+                    }
+                    break;
+                    default:
+                    break;                        
 
-
-            //do
-            //{
-            //    /* start-loop */
-            //    Console.WriteLine("** EXERCISE 5 - GARAGE **");
-            //    Console.WriteLine("Enter Choice (0 to quit): ");
-
-            //    input = Console.ReadLine();
-            //    /* pause-loop */
-
-            //    int.TryParse(input, out result);
-            //    //result == 0 ? quit = true : quit = false;
-            //    if (result == 0) { quit = true; }
-
-            //    /* continue-loop */
-
-            //    switch (result)
-            //    {
-            //        case 1:
-            //            Console.WriteLine("Car Paint WHITE selected");
-            //            Models.Vehicle v1 = new Car { vColor = Models.vColor.White };
-            //            v1.Print();
-            //            break;
-            //        case 2:
-            //            Console.WriteLine("Car Paint RED selected");
-            //            Models.Vehicle v2 = new Car { vColor = Models.vColor.Red };
-            //            v2.Print();
-            //            break;
-            //        case 3:
-            //            Console.WriteLine("Car Paint BLUE selected");
-            //            Models.Vehicle v3 = new Car { vColor = Models.vColor.Blue };
-            //            v3.Print();
-            //            break;
-            //        case 4:
-            //            Console.WriteLine("Car Paint GREEN selected");
-            //            Models.Vehicle v4 = new Car { vColor = Models.vColor.Green };
-            //            v4.Print();
-            //            break;
-            //        case 99:
-            //            Console.WriteLine("99");
-            //            break;
-            //        default:
-
-            //            Console.WriteLine("DEFAULT Car Paint BLACK selected");
-            //            Models.Vehicle v = new Car { vColor = Models.vColor.Black };
-            //            v.Print();
-            //            break;
-
-            //    }
-
-
-
-
-            //    /* end-loop */
-            //} while (!quit);
+            }   
+            
 
 
 
@@ -117,7 +105,14 @@
         }
 
 
-
+        static void Initialize()
+        {
+            ////initialize
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.SetWindowSize(800, 600);
+            Console.Title = title;
+        }
 
 
     }

@@ -113,6 +113,8 @@ namespace GarageApp.Models
         
     }
 
+    public class Motorcycle : Vehicle { }
+
     // WATER VESSSEL (NO WHEELS)
     public class Boat : Vehicle
     {

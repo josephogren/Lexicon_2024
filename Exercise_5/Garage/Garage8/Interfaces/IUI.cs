@@ -9,8 +9,9 @@ namespace Garage8.Interfaces
     public interface IUI
     {
 
-        string Prompt(string prompt);               
+        void Prompt(string prompt);               
         string PromptInput();
+        void Alert(string alert);
         void ShowMessage(string msg);
         void PrintText(string text);
         int getUserInput();
@@ -19,17 +20,17 @@ namespace Garage8.Interfaces
     }
 
 
-    internal class Prompt : IUI 
+    internal class Prompt : IUI
     {
 
-        string Prompt(string prompt)
+        void IUI.Prompt(string prompt)
         {
             Console.WriteLine(prompt);
         }
 
-        void Alert(string alert) { Console.WriteLine(alert); }
+        void IUI.Alert(string alert) { Console.WriteLine(alert); }
 
-        string PromptInput()
+        string IUI.PromptInput()
         {
             var input = Console.ReadLine();
 
@@ -42,11 +43,11 @@ namespace Garage8.Interfaces
 
         }
 
-        void ShowMessage(string msg) { Console.Write(msg); }
-        void PrintText(string text) { Console.WriteLine(text); }
+        void IUI.ShowMessage(string msg) { Console.Write(msg); }
+        void IUI.PrintText(string text) { Console.WriteLine(text); }
 
-        int getUserInput() { return Console.Read(); }
-        char getReply()
+        int IUI.getUserInput() { return Console.Read(); }
+        char IUI.getReply()
         {
             var input = Console.ReadKey();
             return input.KeyChar;
