@@ -86,7 +86,21 @@ namespace GarageApp
                     var ans = prompt.GetNumberFromUser();
                     if (ans.Equals(1))
                     {
-                        ourGarage.AddVehicle(new Models.Vehicle());
+
+                        prompt.Alert("This will create a new vehicle!");
+                        prompt.PrintText($"1 - Car, 2 - Motorcycle, 3 - Bus, 4 - Boat, 5 - Airplane");
+                        int ans= prompt.GetNumberFromUser();
+
+                        switch (ans)
+                        {
+                            case 1: ourGarage.AddVehicle(new Car()); break;
+                            case 2: ourGarage.AddVehicle(new Motorcycle()); break;
+                            case 3: ourGarage.AddVehicle(new Bus()); break;
+                            case 4: ourGarage.AddVehicle(new Boat()); break;
+                            case 5: ourGarage.AddVehicle(new Airplane()); break;
+                            defalut: prompt.Alert("Please enter a number between 1 and 5"); break;
+                        }
+                        
                     }
                     if (ans.Equals(2))
                     {
