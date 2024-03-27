@@ -3,14 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 
 namespace GarageApp.Models
 {
-    public  class Garage<V> : IEnumerable<V> where V : Vehicle
-    {
+    public  class Garage<V> : IEnumerator<Vehicle> { 
         // MEMBERS
         private int capacity = 1;
         private int parking_spot = 0;
@@ -27,29 +27,37 @@ namespace GarageApp.Models
             parkedVehicles[parking_spot] = vehicle;
         }
 
+        public Vehicle Current => throw new NotImplementedException();
+
+        object IEnumerator.Current => throw new NotImplementedException();
+
 
 
 
 
         // METHODS
 
-        public IEnumerator<V> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void AddVehicle(Vehicle vehicle)
         {
-            
-            parkedVehicles[parking_spot] = vehicle;
             parking_spot++;
+            parkedVehicles[parking_spot] = vehicle;
+            
         }
 
         public void RemoveVehicle(Vehicle vehicle)
         {
+            int vin = vehicle.VIN;
+            foreach(Vehicle v in parkedVehicles)
+            {
+                if (v.VIN == vin)
+                {
+                    parkedVehicles[parking_spot] = 0;
+                }
+            }
             parkedVehicles[capacity] = null;       
         }
-
 
 
         public void ShowAllVehicles()
@@ -62,10 +70,51 @@ namespace GarageApp.Models
             
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+
+        // ENUMERATOR FOR VEHICLES
+        public VehiclesEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new VehiclesEnumerator(this);
         }
+
+        //public bool MoveNext()
+        //{
+        //    nIndex++;
+        //    return (nIndex < parkedVehicles.items.Length);
+        //}
+
+        public void Reset() { }
+        public void Dispose() { }
+
+
+
+        // Declare the enumerator class:  
+        public class VehiclesEnumerator
+        {
+            int nIndex;
+            Vehicle[] parkedVehicles;
+            private Garage<V> garage;
+
+            public VehiclesEnumerator(Vehicle[] coll)
+            {
+                parkedVehicles = coll;
+                nIndex = -1;
+            }
+
+            public VehiclesEnumerator(Garage<V> garage)
+            {
+                this.garage = garage;
+            }
+
+            //public bool MoveNext()
+            //{
+            //    nIndex++;
+            //    return (nIndex < parkedVehicles.items.Length);
+            //}
+
+            public int Current => parkedVehicles.items[nIndex];
+        }
+
     }
 }
 

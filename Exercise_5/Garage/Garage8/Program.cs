@@ -127,10 +127,7 @@ namespace GarageApp
                     break;
                 case 3:
                     prompt.PrintText("SHOWING ALL VEHICLES IN GARAGE");
-                    foreach (Vehicle v in ourGarage)
-                    {
-                        v.PrintVehicle();
-                    }
+                    gary.ListAllVehicles();
                     break;
                 case 4:
                     prompt.PrintText("SEARCH FOR VEHICLE IN GARAGE");

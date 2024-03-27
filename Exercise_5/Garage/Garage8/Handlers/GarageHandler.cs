@@ -40,6 +40,11 @@ namespace GarageApp.Handlers
             garage.AddVehicle(vehicle);
         }
 
+        public void Unpark(Vehicle vehicle)
+        {
+
+        }
+
         public void ListAllVehicles()
         {
             foreach (Vehicle v in garage)
