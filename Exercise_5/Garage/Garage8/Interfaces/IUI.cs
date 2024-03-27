@@ -6,17 +6,51 @@ using System.Threading.Tasks;
 
 namespace Garage8.Interfaces
 {
-    internal interface IUI
+    public interface IUI
     {
 
-
-        string Prompt();
+        string Prompt(string prompt);               
         string PromptInput();
-        void ShowText(string text);
-        void PrintMessage(string message);
+        void ShowMessage(string msg);
+        void PrintText(string text);
+        int getUserInput();
+        char getReply(); 
 
-        string getUserInput();
-        string getReply();
+    }
+
+
+    internal class Prompt : IUI 
+    {
+
+        string Prompt(string prompt)
+        {
+            Console.WriteLine(prompt);
+        }
+
+        void Alert(string alert) { Console.WriteLine(alert); }
+
+        string PromptInput()
+        {
+            var input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input) && string.IsNullOrWhiteSpace(input))
+            {
+                throw new FormatException("Syntax Error");
+            }
+
+            return input;
+
+        }
+
+        void ShowMessage(string msg) { Console.Write(msg); }
+        void PrintText(string text) { Console.WriteLine(text); }
+
+        int getUserInput() { return Console.Read(); }
+        char getReply()
+        {
+            var input = Console.ReadKey();
+            return input.KeyChar;
+        }
 
     }
 }
