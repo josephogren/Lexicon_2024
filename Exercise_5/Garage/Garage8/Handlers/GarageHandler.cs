@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GarageApp.Models;
 
-namespace Garage8.Handlers
+
+
+namespace GarageApp.Handlers
 {
-    internal class GarageHandler
+    public class GarageHandler
     {
+        private object garage;
 
         public GarageHandler() { }
         public GarageHandler(string name)
         {
                 
-        }   
+        }
 
-        
+
+        public Garage Build()
+        {
+            List<Vehicle> list = new List<Vehicle>();
+
+            return new Garage(list);
+        }
     }
+
+    
 }
