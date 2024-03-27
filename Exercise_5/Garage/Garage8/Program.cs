@@ -30,73 +30,21 @@ namespace GarageApp
         static string menu = $"1 - New Garage, 2 - Add/Remove, 3 - List All, 4 - Search, 5 - Quit";
 
         static Garage ourGarage;
+        static IUI prompt = new Prompt();
 
 
         static void Main(string[] args)
         {
             Initialize();
-
-            IUI prompt = new Prompt();
+            
+            prompt.PrintText(title);
 
             ////run
-
-            prompt.PrintText(title);
-            prompt.PrintText(menu);
-            var user_input = prompt.getReply();
-            int ui = (int)user_input;
-
-            switch(ui)
-            {
-
-                case 1:
-                    prompt.ShowMessage("CREATING A NEW GARAGE");
-                    prompt.Prompt("Capacity: ");
-                    var cap = prompt.getReply();
-                    GarageHandler gh = new GarageHandler();
-                    gh.Build(cap);
-                    break;
-                case 2:
-                    prompt.ShowMessage("ADD OR REMOVE VEHICLES IN GARAGE");
-                    prompt.Prompt("1 - Add, 2 - Remove");
-                    var ans = prompt.getReply();    
-                    if(ans == 1)
-                    {
-                        ourGarage.AddVehicle(new Models.Vehicle());
-                    }
-                    if(ans == 2)
-                    {
-                        prompt.Prompt("Enter Vehicle to remove: ");
-                        var n  = (int)prompt.getReply();
-                        foreach (Vehicle v in ourGarage)
-                        {
-                            if (v.VIN == n)
-                            {
-                                ourGarage.RemoveVehicle(v);
-                            }
-                        }
-                        
-                    }
-                    break;
-                case 3:
-                    prompt.ShowMessage("SHOWING ALL VEHICLES IN GARAGE");
-                    break;
-                case 4:
-                    prompt.ShowMessage("SEARCH FOR VEHICLE IN GARAGE");
-                    break;
-                case 5:
-                    prompt.ShowMessage("ARE YOU SURE YOU WANT TO QUIT? (y/n)"); 
-                    if (prompt.getReply() == 'y')
-                    {
-                        quit = true;
-                    }
-                    break;
-                    default:
-                    break;                        
-
-            }   
-            
-
-
+            do
+            {                
+              Run();
+            } while (!quit);
+           
 
             ////close
             Console.In.Close();
@@ -112,6 +60,65 @@ namespace GarageApp
             Console.ForegroundColor = ConsoleColor.Black;
             Console.SetWindowSize(800, 600);
             Console.Title = title;
+        }
+
+        static void Run()
+        {
+
+            prompt.PrintText(menu);
+            var user_input = prompt.PromptInput();
+            int ui = 0;
+            int.TryParse(user_input, out ui);
+
+            switch (ui)
+            {
+
+                case 1:
+                    prompt.ShowMessage("CREATING A NEW GARAGE");
+                    prompt.Prompt("Capacity: ");
+                    var cap = prompt.getReply();
+                    GarageHandler gh = new GarageHandler();
+                    gh.Build(cap);
+                    break;
+                case 2:
+                    prompt.ShowMessage("ADD OR REMOVE VEHICLES IN GARAGE");
+                    prompt.Prompt("1 - Add, 2 - Remove");
+                    var ans = prompt.getReply();
+                    if (ans == 1)
+                    {
+                        ourGarage.AddVehicle(new Models.Vehicle());
+                    }
+                    if (ans == 2)
+                    {
+                        prompt.Prompt("Enter Vehicle to remove: ");
+                        var n = (int)prompt.getReply();
+                        foreach (Vehicle v in ourGarage)
+                        {
+                            if (v.VIN == n)
+                            {
+                                ourGarage.RemoveVehicle(v);
+                            }
+                        }
+
+                    }
+                    break;
+                case 3:
+                    prompt.ShowMessage("SHOWING ALL VEHICLES IN GARAGE");
+                    break;
+                case 4:
+                    prompt.ShowMessage("SEARCH FOR VEHICLE IN GARAGE");
+                    break;
+                case 5:
+                    prompt.ShowMessage("ARE YOU SURE YOU WANT TO QUIT? (y/n)");
+                    if (prompt.getReply() == 'y')
+                    {
+                        quit = true;
+                    }
+                    break;
+                default:
+                    break;
+
+            }
         }
 
 
