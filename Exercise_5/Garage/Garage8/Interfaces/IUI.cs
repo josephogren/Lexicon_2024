@@ -1,31 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Garage8.Interfaces
+﻿namespace Garage8.Interfaces
 {
     public interface IUI
     {
+        public ConsoleKey GetKeyInput();
+        public int GetNumberFromUser();
+        public bool GetReply();
+        public string GetUserInput();
 
-        void Prompt(string prompt);               
-        string ValidateUserInput(string input);
-        void Alert(string alert);
-        void ShowMessage(string msg);
-        void PrintText(string text);
-        string getUserInput();
-        char getReply(); 
+        public void Alert(string alert);
+        public void ShowMessage(string msg);
+        public void PrintText(string text);
 
+        public string ValidateStringInput(string string_input);
     }
 
 
     public class Prompt : IUI
     {
+        
+        // IN
+        public ConsoleKey GetKeyInput() { return Console.ReadKey().Key; }
 
-        string ValidateUserInput(string user_input)
+
+        public bool GetReply()
         {
-            
+            ConsoleKey key_input = GetKeyInput();
+
+            switch (key_input)
+            {
+                case ConsoleKey.Enter: return true;
+                case ConsoleKey.Y: return true;
+                case ConsoleKey.N: return false;
+                default: return false;
+            }
+        }
+
+        public string GetUserInput()
+        {
+            var string_input = Console.ReadLine();
+            return ValidateStringInput(string_input.ToString());
+        }
+
+        // OUT
+        public void Alert(string alert) { Console.WriteLine(alert); }
+        public void ShowMessage(string msg) { Console.Write(msg); }
+        public void PrintText(string text) { Console.WriteLine(text); }
+
+
+        /* Validation Code */
+        public string ValidateStringInput(string user_input)
+        {
+
             if (string.IsNullOrEmpty(user_input) && string.IsNullOrWhiteSpace(user_input))
             {
                 throw new FormatException("Syntax Error");
@@ -34,31 +59,13 @@ namespace Garage8.Interfaces
             return user_input;
 
         }
+          
 
-        string getUserInput() 
+        public int GetNumberFromUser()
         {
-            var string_input = Console.ReadLine();
-            return ValidateUserInput(string_input);            
+            int result = 0;
+            int.TryParse(GetUserInput(), out result);
+            return result;
         }
-        char getReply()
-        {
-            var key_input = Console.ReadKey();
-            return IUI.ValidateUserInput(key_input);
-            
-        }
-
-
-        void Prompt(string prompt)
-        {
-            Console.WriteLine(prompt);
-        }
-
-        void Alert(string alert) { Console.WriteLine(alert); }
-
-
-        void ShowMessage(string msg) { Console.Write(msg); }
-        void PrintText(string text) { Console.WriteLine(text); }
-
-
     }
 }

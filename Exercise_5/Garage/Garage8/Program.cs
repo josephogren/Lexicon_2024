@@ -66,7 +66,7 @@ namespace GarageApp
         {
 
             prompt.PrintText(menu);
-            var user_input = prompt.PromptInput();
+            var user_input = prompt.GetUserInput();
             int ui = 0;
             int.TryParse(user_input, out ui);
 
@@ -75,26 +75,26 @@ namespace GarageApp
 
                 case 1:
                     prompt.PrintText("CREATING A NEW GARAGE");
-                    prompt.Prompt("Capacity: ");
-                    var cap = prompt.getReply();
+                    prompt.ShowMessage("Capacity: ");
+                    int cap = prompt.GetNumberFromUser();
                     GarageHandler gh = new GarageHandler();
                     gh.Build(cap);
                     break;
                 case 2:
                     prompt.PrintText("ADD OR REMOVE VEHICLES IN GARAGE");
-                    prompt.Prompt("1 - Add, 2 - Remove");
-                    var ans = prompt.getUserInput();
-                    if (ans == 1)
+                    prompt.ShowMessage("1 - Add, 2 - Remove");
+                    var ans = prompt.GetNumberFromUser();
+                    if (ans.Equals(1))
                     {
                         ourGarage.AddVehicle(new Models.Vehicle());
                     }
-                    if (ans == 2)
+                    if (ans.Equals(2))
                     {
-                        prompt.Prompt("Enter Vehicle to remove: ");
-                        var n = (int)prompt.getReply();
+                        prompt.ShowMessage("Enter Vehicle to remove: ");
+                        int number = prompt.GetNumberFromUser();
                         foreach (Vehicle v in ourGarage)
                         {
-                            if (v.VIN == n)
+                            if (v.VIN == number)
                             {
                                 ourGarage.RemoveVehicle(v);
                             }
@@ -110,10 +110,8 @@ namespace GarageApp
                     break;
                 case 5:
                     prompt.PrintText("ARE YOU SURE YOU WANT TO QUIT? (y/n)");
-                    if (prompt.getReply() == 'y')
-                    {
-                        quit = true;
-                    }
+                    quit = prompt.GetReply();
+                    
                     break;
                 default:
                     break;
