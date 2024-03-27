@@ -74,14 +74,14 @@ namespace GarageApp
             {
 
                 case 1:
-                    prompt.ShowMessage("CREATING A NEW GARAGE");
+                    prompt.PrintText("CREATING A NEW GARAGE");
                     prompt.Prompt("Capacity: ");
                     var cap = prompt.getReply();
                     GarageHandler gh = new GarageHandler();
                     gh.Build(cap);
                     break;
                 case 2:
-                    prompt.ShowMessage("ADD OR REMOVE VEHICLES IN GARAGE");
+                    prompt.PrintText("ADD OR REMOVE VEHICLES IN GARAGE");
                     prompt.Prompt("1 - Add, 2 - Remove");
                     var ans = prompt.getReply();
                     if (ans == 1)
@@ -103,13 +103,13 @@ namespace GarageApp
                     }
                     break;
                 case 3:
-                    prompt.ShowMessage("SHOWING ALL VEHICLES IN GARAGE");
+                    prompt.PrintText("SHOWING ALL VEHICLES IN GARAGE");
                     break;
                 case 4:
-                    prompt.ShowMessage("SEARCH FOR VEHICLE IN GARAGE");
+                    prompt.PrintText("SEARCH FOR VEHICLE IN GARAGE");
                     break;
                 case 5:
-                    prompt.ShowMessage("ARE YOU SURE YOU WANT TO QUIT? (y/n)");
+                    prompt.PrintText("ARE YOU SURE YOU WANT TO QUIT? (y/n)");
                     if (prompt.getReply() == 'y')
                     {
                         quit = true;
