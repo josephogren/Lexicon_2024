@@ -69,6 +69,7 @@ namespace GarageApp
             var user_input = prompt.GetUserInput();
             int ui = 0;
             int.TryParse(user_input, out ui);
+            int? ans = null;
 
             switch (ui)
             {
@@ -83,13 +84,13 @@ namespace GarageApp
                 case 2:
                     prompt.PrintText("ADD OR REMOVE VEHICLES IN GARAGE");
                     prompt.ShowMessage("1 - Add, 2 - Remove");
-                    var ans = prompt.GetNumberFromUser();
+                    ans  = prompt.GetNumberFromUser();
                     if (ans.Equals(1))
                     {
 
                         prompt.Alert("This will create a new vehicle!");
                         prompt.PrintText($"1 - Car, 2 - Motorcycle, 3 - Bus, 4 - Boat, 5 - Airplane");
-                        int ans= prompt.GetNumberFromUser();
+                        ans = prompt.GetNumberFromUser();
 
                         switch (ans)
                         {
