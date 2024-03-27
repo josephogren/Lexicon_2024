@@ -13,7 +13,7 @@ namespace GarageApp.Handlers
     public class GarageHandler
     {
         
-        public Garage<Vehicle> garage;
+        public Garage<Vehicle>? garage = null;
 
         
         public GarageHandler() 

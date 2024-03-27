@@ -43,6 +43,7 @@ namespace GarageApp
             Vehicle vehicle = new Boat();
             vehicle.PrintVehicle();
 
+            gary.Build(16);
             gary.Park(vehicle);
             
 
@@ -101,11 +102,11 @@ namespace GarageApp
 
                         switch (ans)
                         {
-                            case 1: ourGarage.AddVehicle(new Car()); break;
-                            case 2: ourGarage.AddVehicle(new Motorcycle()); break;
-                            case 3: ourGarage.AddVehicle(new Bus()); break;
-                            case 4: ourGarage.AddVehicle(new Boat()); break;
-                            case 5: ourGarage.AddVehicle(new Airplane()); break;
+                            case 1: gary.Park(new Car()); break;
+                            case 2: gary.Park(new Motorcycle()); break;
+                            case 3: gary.Park(new Bus()); break;
+                            case 4: gary.Park(new Boat()); break;
+                            case 5: gary.Park(new Airplane()); break;
                             defalut: prompt.Alert("Please enter a number between 1 and 5"); break;
                         }
                         

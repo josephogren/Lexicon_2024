@@ -85,20 +85,30 @@ basklassen Vehicle ). Exempelvis:
 ● Användaren ska få feedback på att saker gått bra eller dåligt. Till exempel när vi
 parkerat ett fordon vill vi få en bekräftelse på att fordonet är parkerat. Om det inte
 går vill användaren få veta varför.
+
 Programmet ska vara en konsol applikation med ett textbaserat användargränssnitt.
+
 Från gränssnittet skall det gå att:
 ● Navigera till samtlig funktionalitet från garage via gränssnittet
 ● Skapa ett garage med en användar specificerad storlek
 ● Det skall gå att stänga av applikationen från gränssnittet
 Applikationen skall fel hantera indata på ett robust sätt, så att den inte kraschar vid
 felaktig inmatning eller användning.
+
+
+
+
+
+
 Unit testing
+
 Testen ska skapas i ett eget testprojekt. Vi begränsar oss till att testa de publika
 metoderna i klassen Garage . (Att skriva test för hela applikationen ses som en extra
 uppgift om tid finns)
 Experimentera gärna med att skriva testen före ni implementerat funktionaliteten!
 Använd er sedan ctrl . för att generera era objekt och metoder.
 Implementera sen funktionaliteten tills testet går igenom.
+
 Strukturera testen enligt principen.
 1. Arrange här sätter ni upp det som ska testas, instansierar objekt och inputs
 2. Act här anropar ni metoden som ska testas
@@ -108,6 +118,9 @@ veta vad som inte fungerat enbart genom att se på testmetod namnet.
 Exempelvis:
 [MethodName_StateUnderTest_ExpectedBehavior]
 Public void Sum_NegativeNumberAs1stParam_ExceptionThrown()
+
+
+***
 BONUS: För er som fortfarande har tid kvar
 Det går att via C# skriva och läsa till filsystemet från er applikation. Ta reda på hur man gör
 för att kunna spara ert garage (via meny eller automatiskt vid avstängning) och ladda in ert

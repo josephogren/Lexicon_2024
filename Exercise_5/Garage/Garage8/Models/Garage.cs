@@ -13,6 +13,7 @@ namespace GarageApp.Models
     {
         // MEMBERS
         private int capacity = 1;
+        private int parking_spot = 0;
         private Vehicle[] parkedVehicles;
 
 
@@ -23,7 +24,7 @@ namespace GarageApp.Models
             Vehicle vehicle = new Car();
 
             this.parkedVehicles = new Vehicle[capacity];
-            parkedVehicles[capacity] = vehicle;
+            parkedVehicles[parking_spot] = vehicle;
         }
 
 
@@ -40,7 +41,8 @@ namespace GarageApp.Models
         public void AddVehicle(Vehicle vehicle)
         {
             
-            parkedVehicles[capacity] = vehicle;
+            parkedVehicles[parking_spot] = vehicle;
+            parking_spot++;
         }
 
         public void RemoveVehicle(Vehicle vehicle)
