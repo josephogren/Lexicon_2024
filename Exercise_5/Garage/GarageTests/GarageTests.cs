@@ -19,7 +19,7 @@ namespace GarageTests
         {
             GarageApp.Handlers.GarageHandler gh = new GarageApp.Handlers.GarageHandler();
 
-            Garage garage = gh.Build();
+            Garage garage = gh.Build(27); /* Create a garage of capacity 27 */
 
             Assert.NotNull(garage);        
             
@@ -41,7 +41,7 @@ namespace GarageTests
             GarageApp.Models.Boat vehicle = new GarageApp.Models.Boat();
             int wheels = vehicle.nWheels;
 
-            Assert.Equal(wheels, 0);
+            Assert.Equal(0, wheels);
         }
 
         [Fact]
