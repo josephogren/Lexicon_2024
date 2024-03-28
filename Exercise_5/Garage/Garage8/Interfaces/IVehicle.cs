@@ -14,7 +14,7 @@ namespace Garage8.Interfaces
         //string Name { get; }    
         //string Description { get; }
 
-        public int? VIN { get; set; }           /* Vehicle Identification Number (unique int) */
+        public int VIN { get; set; }           /* Vehicle Identification Number (unique int) */
 
         public string vMake { get; set; }      /* The make of the vechicle  */
         public string vModel { get; set; }      /* The model of the vehicle  */

@@ -34,7 +34,7 @@ namespace GarageApp.Models
     /// </summary>
     public  class Vehicle : IVehicle
     {
-        public int? VIN { get; set; }           /* Vehicle Identification Number (unique int) */
+        public int VIN { get; set; }           /* Vehicle Identification Number (unique int) */
 
         public string vMake { get; set; }      /* The make of the vechicle  */
         public string vModel { get; set; }      /* The model of the vehicle  */

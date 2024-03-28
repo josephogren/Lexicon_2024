@@ -131,6 +131,23 @@ namespace GarageApp
                     break;
                 case 4:
                     prompt.PrintText("SEARCH FOR VEHICLE IN GARAGE");
+                    prompt.ShowMessage("Enter the search criteria (e.g. 'Toyota Camry UHX-425'):");
+                    string search_criteria = prompt.GetUserInput();
+
+                    // Split the user input into individual search terms
+                    string[] searchTerms = search_criteria.Split(" ");
+
+                    // Extract the relevant search criteria from the user input
+                    string make = searchTerms[0];
+                    string model = searchTerms[1];
+                    string reg = searchTerms[2];
+
+                    // Perform LINQ query
+                    string searchResults = gary.garage.parkedVehicles.Where(v => v.vMake.Equals(make, StringComparison.OrdinalIgnoreCase)
+                                    && v.vModel.Equals(model, StringComparison.OrdinalIgnoreCase)
+                                    && v.RegPlate.Equals(reg, StringComparison.OrdinalIgnoreCase)).ToString();
+                        
+
                     break;
                 case 5:
                     prompt.PrintText("ARE YOU SURE YOU WANT TO QUIT? (y/n)");

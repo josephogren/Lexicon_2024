@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Models
 {
-    public  class Garage<V> : IEnumerator<Vehicle> { 
+    public  class Garage<Vehicle> // : IEnumerator<Vehicle> 
+    { 
         // MEMBERS
         private int capacity = 1;
         private int parking_spot = 0;
-        private Vehicle[] parkedVehicles;
+        static public Vehicle[] parkedVehicles {  get; set; }
+
+        IEnumerator<Vehicle> vEnumerator = new VehiclesEnumerator(parkedVehicles);
 
 
         public Garage(int capacity)
@@ -23,7 +26,7 @@ namespace GarageApp.Models
 
             Vehicle vehicle = new Car();
 
-            this.parkedVehicles = new Vehicle[capacity];
+            //this.parkedVehicles = new Vehicle[capacity];
             parkedVehicles[parking_spot] = vehicle;
         }
 
@@ -77,19 +80,9 @@ namespace GarageApp.Models
             return new VehiclesEnumerator(this);
         }
 
-        public bool MoveNext()
-        {
-            nIndex++;
-            return (nIndex < parkedVehicles.items.Length);
-        }
-
-        public void Reset() { }
-        public void Dispose() { }
-
-
 
         // Declare the enumerator class:  
-        public class VehiclesEnumerator
+        public class VehiclesEnumerator : IEnumerator<Vehicle>
         {
             int nIndex;
             Vehicle[] parkedVehicles;
@@ -101,7 +94,7 @@ namespace GarageApp.Models
                 nIndex = -1;
             }
 
-            public VehiclesEnumerator(Garage<V> garage)
+            public VehiclesEnumerator(Garage<Vehicle> garage)
             {
                 this.garage = garage;
             }
@@ -109,10 +102,22 @@ namespace GarageApp.Models
             public bool MoveNext()
             {
                 nIndex++;
-                return (nIndex < parkedVehicles.items.Length);
+                return (nIndex < parkedVehicles.Length);
             }
 
-            public int Current => parkedVehicles.items[nIndex];
+            public void Reset()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Dispose()
+            {
+                throw new NotImplementedException();
+            }
+
+            public Vehicle Current => parkedVehicles[nIndex];
+
+            //object IEnumerator.Current => throw new NotImplementedException();
         }
 
     }

@@ -45,16 +45,23 @@ namespace GarageApp.Handlers
 
         }
 
-        public void ListAllVehicles()
+        //public void ListAllVehicles()
+        //{
+        //    foreach (Vehicle v in garage)
+        //    {
+        //        if (v != null)
+        //        {
+        //            Console.WriteLine(v);
+        //        }
+        //    }
+        //}
+
+        public Vehicle[] getAllVehicles()
         {
-            foreach (Vehicle v in garage)
-            {
-                if (v != null)
-                {
-                    Console.WriteLine(v);
-                }
-            }
+            return garage.parkedVehicles.ToArray();
         }
+
+
     }
 
     
